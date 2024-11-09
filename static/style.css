@@ -1,0 +1,203 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f7f7f7;
+    height:100vh;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background-color: transparent;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
+    border-radius: 10px;
+}
+
+h1 {
+    color: #2b59ff;
+    text-shadow: 4px 3px 2px rgba(0, 0, 0, 0.6);
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent for form elements */
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.form-label {
+    margin-bottom: 8px;
+    font-size:21px;
+}
+
+
+input:focus, select:focus, button:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Basic Reset */
+
+.containers {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9); /* Transparent white background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px); /* Optional: Frosted glass effect */
+}
+
+.heading {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin: 10px 0px ;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.recipe {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.recipe:hover {
+    transform: translateY(-10px);
+}
+
+.recipe h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.recipe p {
+    font-style:italic;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.recipe a {
+    font-size: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.recipe a:hover {
+    text-decoration: underline;
+}
+
+.img {
+    width: 100%;
+    max-width: 320px;
+    height: 300px;
+    display: block;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.back{
+    display: flex;
+    justify-content: center;
+}
+
+.back-link {
+    display: inline-block;
+    margin: 15px 0px;
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: rgba(0, 123, 255, 0.1);
+    transition: background-color 0.3s;
+}
+
+.back-link:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #0056b3;
+}
+
+
+/* General styling for the filter section */
+.filters {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.filters h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Styling for the ingredient list */
+.ingredient-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Styling for individual filter buttons */
+.filter-btn {
+    margin: 5px 0px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.filter-btn:hover {
+    background-color: #2fb7ab;
+    border:none;
+}
+
+.filter-btn:focus {
+    outline: 0px;
+}
+
+.filter-btn.active {
+    background-color: #28a745;
+}
+
+.recipe-count {
+    font-weight: bold;
+    margin: 10px 0px;
+    font-size: 22px;
+    color: #6d6d6d;
+}

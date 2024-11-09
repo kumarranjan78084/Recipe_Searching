@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="containers">
+        <h1 class="heading">Search Results for: "{{ search_query }}"</h1>
+
+        <div class="back">
+            <a href="/" class="back-link">Back to search</a>
+        </div>
+
+        <!-- Ingredients Filter Section -->
+        <div class="filters">
+            <h3>Filter by Ingredients:</h3>
+            <p id="recipe-count" class="recipe-count">Total Recipes Found: {{ total_results }}</p>
+            <div id="ingredient-filter" class="ingredient-list">
+                <!-- Predefined ingredient buttons -->
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Tomato')">Tomato</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Curd')">Curd</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Curry')">Curry</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Onion')">Onion</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Garlic')">Garlic</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Ginger')">Ginger</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Chicken')">Chicken</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Paneer')">Paneer</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Carrot')">Carrot</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Pepper')">Pepper</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'sauce')">sauce</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Cheese')">Cheese</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Thyme')">Thyme</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Mushroom')">Mushroom</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Lemon')">Lemon</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Spinach')">Spinach</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Honey')">Honey</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Tofu')">Tofu</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Zucchini')">Zucchini</button>
+                <button class="filter-btn" onclick="toggleIngredientFilter(this, 'Chili')">Chili</button>
+            </div>
+        </div>
+
+        <!-- Recipes Section -->
+        <div id="recipes-container">
+            {% if results %}
+                {% for result in results %}
+                    <div class="recipe">
+                        <h2>{{ result['TranslatedRecipeName'] }} - {{ result['TotalTimeInMins'] }} mins ({{ result['Cuisine'] }})</h2>
+                        <p><strong>Ingredients:</strong> {{ result['TranslatedIngredients'] }}</p>
+                        {% if result['image-url'] %}
+                            <img class="img" src="{{ result['image-url'] }}" alt="Recipe Image">
+                        {% endif %}
+                        <p><a href="{{ result['URL'] }}" target="_blank">View Full Recipe</a></p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No recipes found.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        let selectedIngredients = [];
+
+        function toggleIngredientFilter(button, ingredient) {
+            // Toggle button active state
+            button.classList.toggle('active');
+
+            if (selectedIngredients.includes(ingredient)) {
+                // Remove the ingredient from the selected list
+                selectedIngredients = selectedIngredients.filter(item => item !== ingredient);
+            } else {
+                // Add the ingredient to the selected list
+                selectedIngredients.push(ingredient);
+            }
+
+            filterByIngredients();
+        }
+
+        function filterByIngredients() {
+            const recipes = document.querySelectorAll('.recipe');
+            let visibleRecipeCount = 0;
+
+            recipes.forEach(recipe => {
+                const ingredientsText = recipe.querySelector('p').textContent.toLowerCase();
+                // Check if all selected ingredients are in the recipe's ingredients
+                const matchesAll = selectedIngredients.every(ingredient =>
+                    ingredientsText.includes(ingredient.toLowerCase())
+                );
+
+                if (matchesAll) {
+                    recipe.style.display = 'block';
+                    visibleRecipeCount++;
+                } else {
+                    recipe.style.display = 'none';
+                }
+            });
+
+            // Update the total recipe count based on visible recipes
+            document.getElementById('recipe-count').textContent = `Total Recipes Found: ${visibleRecipeCount}`;
+        }
+    </script>
+
+</body>
+</html>
