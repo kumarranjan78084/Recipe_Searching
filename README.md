@@ -1,7 +1,8 @@
 # Recipe Generator
 
-## Overview
-The Recipe Generator is a machine learning-based application designed to recommend recipes based on user preferences or available ingredients. Using a dataset of 13,000 recipes, this application suggest relevant recipes.
+## Recipe Searching with Python
+
+This repository is now a Python-based application that uses Flask for backend logic. It allows users to search for recipes based on ingredients or preferences.
 
 ## Features
 - **Recipe Recommendation**: Generate recipes based on input preferences like cuisine type, dietary restrictions, and available ingredients.
